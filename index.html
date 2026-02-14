@@ -1,106 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Developer Portfolio</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Dev</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- NAV -->
-<nav class="navbar">
-	<div class="container">
-		<div class="logo">&lt;/dev&gt;</div>
-		<ul class="nav-menu">
-			<li><a href="#home">Home</a></li>
-			<li><a href="#projects">Projects</a></li>
-			<li><a href="#skills">Skills</a></li>
-			<li><a href="#about">About</a></li>
-		</ul>
-	</div>
-</nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, im blqnk3d</h1>
+                <a href="#about" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
 
-<!-- HERO -->
-<section id="home" class="hero container">
-	<div>
-		<h1>Full-Stack Developer</h1>
-		<p>Building clean, high-performance web experiences with modern technologies.</p>
-		<div class="hero-buttons">
-			<a href="#projects" class="btn btn-primary">View Work</a>
-		</div>
-	</div>
-	<div class="hero-visual">
-	automation.optimize({ <br/>
-	&nbsp;&nbsp;speed: true,<br/>
-	&nbsp;&nbsp;efficiency: "max"<br/>
-	})
-</div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a developer who usually creates tools or other applications I need to make my life easier or save some money.</p>
+                
+                <div class="skills">
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Angular</span>
+						<span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Postgres</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Cheaptroller</h3>
+                    <p></p>
+                    <div class="project-tags">
+                        <span>Flutter</span>
+                        <span>Node.js</span>
+                        <span>C++</span>
+                    </div>
+                    <a href="https://github.com/blqnk3d/Cheaptroller" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-	<div class="container">
-		<h2>Featured Projects</h2>
-		<div class="projects-grid">
-			<div class="project-card">
-				<div class="project-image">
-					<img src="assets/Icon_Cheaptroller.svg" alt="Cheaptroller" style="width: 100%; height: 100%; object-fit: contain; padding: 2rem; background: linear-gradient(135deg, #1a1a1a, #333);">
-				</div>
-				<div class="project-content">
-					<h3>Cheaptroller</h3>
-					<p>Mobile Linux game controlle</p>
-					<div class="tags">
-						<span class="tag">CPP</span>
-						<span class="tag">Node</span>
-						<span class="tag">Flutter</span>
-					</div>
-				</div>
-			</div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-links">
+                <a href="https://github.com/blqnk3d" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </div>
+    </section>
 
-	
-		</div>
-	</div>
-</section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Dev Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
 
-<!-- SKILLS -->
-<section id="skills">
-	<div class="container">
-		<h2>Tech Stack</h2>
-		<div class="skills-grid">
-			<div class="skill-box">
-				<h3>Frontend</h3>
-				<p>Angular · Flutter · Thymeleaf </p>
-			</div>
-			<div class="skill-box">
-				<h3>Backend</h3>
-				<p>Node · Python · PostgreSQL</p>
-			</div>
-			<div class="skill-box">
-				<h3>DevOps</h3>
-				<p>Docker · AWS · CI/CD</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-	<div class="container about">
-		<h2>About Me</h2>
-		<p>
-		Full-stack developer focused on performance, automation, and scalable architectures. I enjoy solving complex problems with clean, efficient code.
-		</p>
-	</div>
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-	© 2026 Blqnk3d — Built with code & caffeine 
-</footer>
-
+    <script src="script.js"></script>
 </body>
 </html>

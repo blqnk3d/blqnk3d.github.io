@@ -1,85 +1,102 @@
-// Smooth scroll for anchor links
+// ============================================
+// Smooth Navigation & Scroll Effects
+// ============================================
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-	anchor.addEventListener('click', function (e) {
-		e.preventDefault();
-		const target = document.querySelector(this.getAttribute('href'));
-		if (target) {
-			target.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start'
-			});
-		}
-	});
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 });
 
-// Intersection Observer for scroll animations
+// ============================================
+// Navbar Background on Scroll
+// ============================================
+
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.style.borderBottomColor = 'rgba(42, 51, 66, 0.5)';
+    } else {
+        navbar.style.borderBottomColor = 'rgb(42, 51, 66)';
+    }
+});
+
+// ============================================
+// Intersection Observer for Animations
+// ============================================
+
 const observerOptions = {
-	threshold: 0.1,
-	rootMargin: '0px 0px -100px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-	entries.forEach(entry => {
-		if (entry.isIntersecting) {
-			entry.target.style.opacity = '1';
-			entry.target.style.transform = 'translateY(0)';
-		}
-	});
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
 }, observerOptions);
 
-// Observe all cards and elements
-document.querySelectorAll('.feature-card, .vehicle-card, .service-item, .stat, .project-card').forEach(el => {
-	el.style.opacity = '0';
-	el.style.transform = 'translateY(30px)';
-	el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-	observer.observe(el);
+// Observe project cards and about sections
+document.querySelectorAll('.project-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
 });
 
-// Contact form submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-	contactForm.addEventListener('submit', function(e) {
-		e.preventDefault();
-		alert('Thanks for reaching out! I\'ll get back to you soon.');
-		this.reset();
-	});
-}
+// ============================================
+// Active Navigation Link on Scroll
+// ============================================
 
-// Active navigation link tracking on scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
 window.addEventListener('scroll', () => {
-	let current = '';
-	const sections = document.querySelectorAll('section[id]');
-	
-	sections.forEach(section => {
-		const sectionTop = section.offsetTop;
-		const sectionHeight = section.clientHeight;
-		if (pageYOffset >= sectionTop - 200) {
-			current = section.getAttribute('id');
-		}
-	});
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
 
-	document.querySelectorAll('.nav-menu a').forEach(link => {
-		link.style.opacity = '0.7';
-		if (link.getAttribute('href').slice(1) === current) {
-			link.style.opacity = '1';
-		}
-	});
+    navLinks.forEach(link => {
+        link.style.color = 'var(--text-secondary)';
+        if (link.getAttribute('href').slice(1) === current) {
+            link.style.color = 'var(--accent)';
+        }
+    });
 });
 
-console.log('Developer Portfolio Loaded ✓');
-	sections.forEach(section => {
-		const sectionTop = section.offsetTop;
-		if (window.pageYOffset >= sectionTop - 200) {
-			current = section.getAttribute('id');
-		}
-	});
+// ============================================
+// Add Subtle Parallax Effect
+// ============================================
 
-	navLinks.forEach(link => {
-		link.style.opacity = '0.7';
-		if (link.getAttribute('href') === `#${current}`) {
-			link.style.opacity = '1';
-			link.style.fontWeight = '700';
-		}
-	});
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+    if (hero) {
+        const scrolled = window.scrollY;
+        hero.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
+    }
+});
 
+// ============================================
+// Prevent FOUC (Flash of Unstyled Content)
+// ============================================
 
+document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'loading') {
+        document.body.style.opacity = '0';
+    } else if (document.readyState === 'interactive') {
+        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.opacity = '1';
+    }
+});
