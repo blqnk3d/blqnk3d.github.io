@@ -1,102 +1,151 @@
 // ============================================
-// Smooth Navigation & Scroll Effects
+// Mobile Navigation Toggle
 // ============================================
+const mobileToggle = document.querySelector(".mobile-toggle");
+const navLinks = document.querySelector(".nav-links");
+const navItems = document.querySelectorAll(".nav-links a");
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+mobileToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  const icon = mobileToggle.querySelector("i");
+  if (navLinks.classList.contains("active")) {
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-times");
+  } else {
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  }
+});
+
+// Close mobile menu when clicking a link
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    mobileToggle.querySelector("i").classList.remove("fa-times");
+    mobileToggle.querySelector("i").classList.add("fa-bars");
+  });
 });
 
 // ============================================
-// Navbar Background on Scroll
+// Typing Effect for Hero
 // ============================================
+const typingText = document.querySelector(".typing-text");
+const phrases = ["Tools.", "Applications.", "Solutions."];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typeSpeed = 100;
 
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.borderBottomColor = 'rgba(42, 51, 66, 0.5)';
-    } else {
-        navbar.style.borderBottomColor = 'rgb(42, 51, 66)';
-    }
-});
+function type() {
+  const currentPhrase = phrases[phraseIndex];
+
+  if (isDeleting) {
+    typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+    typeSpeed = 50;
+  } else {
+    typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+    typeSpeed = 100;
+  }
+
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    isDeleting = true;
+    typeSpeed = 2000; // Pause at end
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    typeSpeed = 500; // Pause before new word
+  }
+
+  setTimeout(type, typeSpeed);
+}
+
+// Start typing effect on load
+document.addEventListener("DOMContentLoaded", type);
 
 // ============================================
-// Intersection Observer for Animations
+// Scroll Animations (Intersection Observer)
 // ============================================
-
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+  threshold: 0.15,
+  rootMargin: "0px 0px -50px 0px",
 };
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      // Optional: Stop observing once visible
+      // observer.unobserve(entry.target);
+    }
+  });
 }, observerOptions);
 
-// Observe project cards and about sections
-document.querySelectorAll('.project-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
+document.querySelectorAll(".fade-in").forEach((el) => {
+  observer.observe(el);
 });
 
 // ============================================
 // Active Navigation Link on Scroll
 // ============================================
+const sections = document.querySelectorAll("section");
+const navLinksArray = document.querySelectorAll(".nav-links a");
 
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    // Offset for navbar height
+    if (window.scrollY >= sectionTop - 150) {
+      current = section.getAttribute("id");
+    }
+  });
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
+  navLinksArray.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").slice(1) === current) {
+      link.classList.add("active");
+    }
+  });
 
-    navLinks.forEach(link => {
-        link.style.color = 'var(--text-secondary)';
-        if (link.getAttribute('href').slice(1) === current) {
-            link.style.color = 'var(--accent)';
-        }
-    });
+  // Navbar Glass Effect Intensity on Scroll
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.style.background = "rgba(11, 13, 23, 0.95)";
+    navbar.style.borderBottom = "1px solid var(--accent)";
+  } else {
+    navbar.style.background = "var(--glass)";
+    navbar.style.borderBottom = "1px solid rgba(45, 55, 72, 0.5)";
+  }
 });
 
 // ============================================
-// Add Subtle Parallax Effect
+// Dynamic Year in Footer
 // ============================================
+document.getElementById("year").textContent = new Date().getFullYear();
 
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-    if (hero) {
-        const scrolled = window.scrollY;
-        hero.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
+// ============================================
+// Smooth Scroll for Anchor Links (Backup for older browsers)
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href");
+    if (targetId === "#") return;
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const headerOffset = 80;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
-});
-
-// ============================================
-// Prevent FOUC (Flash of Unstyled Content)
-// ============================================
-
-document.addEventListener('readystatechange', function() {
-    if (document.readyState === 'loading') {
-        document.body.style.opacity = '0';
-    } else if (document.readyState === 'interactive') {
-        document.body.style.transition = 'opacity 0.3s ease';
-        document.body.style.opacity = '1';
-    }
+  });
 });
