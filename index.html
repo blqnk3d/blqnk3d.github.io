@@ -1,255 +1,168 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>blqnk3d | Developer Portfolio</title>
-        <link rel="stylesheet" href="styles.css" />
-        <!-- Font Awesome for Icons -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-        <!-- Google Fonts -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <!-- Navigation -->
-        <header class="navbar">
-            <div class="container nav-container">
-                <a href="#home" class="logo"
-                    >blqnk3d<span class="dot">.</span></a
-                >
-                <button class="mobile-toggle" aria-label="Toggle Navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
-                    <li><a href="#projects">Projects</a></li>
-                    <li>
-                        <a href="#contact" class="btn-primary nav-btn"
-                            >Contact</a
-                        >
-                    </li>
-                </ul>
-            </div>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>blqnk3d | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-bg-glow"></div>
-            <div class="container hero-content">
-                <p class="hero-greeting">
-                    Hi, I'm <span class="highlight">blqnk3d</span>
-                </p>
-                <h1 class="hero-title">
-                    Building <span class="typing-text"></span
-                    ><span class="cursor">|</span>
-                </h1>
-                <p class="hero-subtitle">
-                    I create tools and applications to optimize workflows and
-                    solve real-world problems.
-                </p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary">View Work</a>
-                    <a href="#contact" class="btn btn-secondary"
-                        >Get In Touch</a
-                    >
-                </div>
-                <div class="scroll-indicator">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-        </section>
+  <!-- ===== DESKTOP ===== -->
+  <div id="desktop">
+    <div id="desktop-icons">
+      <div class="desktop-icon" data-section="about">
+        <div class="desktop-icon-img"><i class="fas fa-user"></i></div>
+        <span class="desktop-icon-label">About</span>
+      </div>
+      <div class="desktop-icon" data-section="projects">
+        <div class="desktop-icon-img"><i class="fas fa-code"></i></div>
+        <span class="desktop-icon-label">Projects</span>
+      </div>
+      <div class="desktop-icon" data-section="contact">
+        <div class="desktop-icon-img"><i class="fas fa-envelope"></i></div>
+        <span class="desktop-icon-label">Contact</span>
+      </div>
+      <div class="desktop-icon" data-href="https://github.com/blqnk3d">
+        <div class="desktop-icon-img"><i class="fab fa-github"></i></div>
+        <span class="desktop-icon-label">GitHub</span>
+      </div>
+    </div>
+    <div id="windows-container"></div>
+  </div>
 
-        <!-- About & Stats Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>About Me</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="about-grid">
-                    <div class="about-text fade-in">
-                        <p>
-                            I'm a developer focused on creating efficient tools
-                            and applications. Whether it's saving money or
-                            making life easier, I build solutions that matter. I
-                            specialize in full-stack development with a keen eye
-                            for clean code and user experience.
-                        </p>
-                        <p>
-                            When I'm not coding, I'm exploring new technologies
-                            or contributing to open-source projects.
-                        </p>
+  <!-- ===== TASKBAR ===== -->
+  <div id="taskbar">
+    <button id="start-btn" aria-label="Start Menu">
+      <svg class="pentagram" viewBox="0 0 24 24" width="18" height="18">
+        <polygon points="12,2 17.9,20.1 2.5,8.9 21.5,8.9 6.1,20.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div id="tabs-container"></div>
+    <div id="tray">
+      <a href="https://github.com/blqnk3d" target="_blank" id="tray-github" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <span id="tray-clock"></span>
+    </div>
+  </div>
 
-                        <div class="tech-stack">
-                            <h3>Tech Stack</h3>
-                            <div class="tech-grid">
-                                <div class="tech-item">
-                                    <i class="fab fa-html5"></i> HTML
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-css3-alt"></i> CSS
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-js"></i> JS
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-angular"></i> Angular
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-node"></i> Node.js
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-python"></i> Python
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-git-alt"></i> Git
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-database"></i> SQL
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-stats fade-in">
-                        <div class="stat-card">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ===== START MENU ===== -->
+  <div id="start-menu">
+    <div class="menu-header">
+      <svg class="pentagram" viewBox="0 0 24 24" width="28" height="28">
+        <polygon points="12,2 17.9,20.1 2.5,8.9 21.5,8.9 6.1,20.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+      </svg>
+      <span>blqnk3d</span>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" data-section="welcome">
+      <i class="fas fa-home"></i> Welcome
+    </div>
+    <div class="menu-item" data-section="about">
+      <i class="fas fa-user"></i> About
+    </div>
+    <div class="menu-item" data-section="projects">
+      <i class="fas fa-code"></i> Projects
+    </div>
+    <div class="menu-item" data-section="contact">
+      <i class="fas fa-envelope"></i> Contact
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-item external" data-href="https://github.com/blqnk3d">
+      <i class="fab fa-github"></i> GitHub
+    </div>
+  </div>
 
-        <!-- Roadmap Section - COMMENTED OUT -->
-        <!--
-    <section id="roadmap" class="roadmap">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>My Journey</h2>
-                <div class="line"></div>
-                <p class="section-subtitle">The path I've taken and where I'm heading</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2021</span>
-                        <h3>The Beginning</h3>
-                        <p>Started learning HTML & CSS. Built first static websites and understood the basics of web structure.</p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2022</span>
-                        <h3>Full Stack Dive</h3>
-                        <p>Dived into JavaScript, Node.js, and Databases. Created dynamic applications and APIs.</p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2023</span>
-                        <h3>Mobile & Tools</h3>
-                        <p>Expanded into Flutter and Python. Built 'Cheaptroller' and various automation tools.</p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024+</span>
-                        <h3>Future Goals</h3>
-                        <p>Focusing on System Architecture, Open Source contributions, and Cloud Infrastructure.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- ===== WINDOW TEMPLATE ===== -->
+  <template id="window-template">
+    <div class="window">
+      <div class="window-titlebar">
+        <div class="window-titlebar-left">
+          <i class="window-icon"></i>
+          <span class="window-title"></span>
         </div>
-    </section>
-    -->
+        <div class="window-controls">
+          <button class="win-min" title="Minimize">─</button>
+          <button class="win-max" title="Maximize">□</button>
+          <button class="win-close" title="Close">✕</button>
+        </div>
+      </div>
+      <div class="window-content"></div>
+    </div>
+  </template>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Featured Projects</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card fade-in">
-                        <div class="card-header">
-                            <i class="fas fa-gamepad"></i>
-                            <div class="card-links">
-                                <a
-                                    href="https://github.com/blqnk3d/Cheaptroller"
-                                    target="_blank"
-                                    ><i class="fab fa-github"></i
-                                ></a>
-                                <a
-                                    href="https://github.com/blqnk3d/Cheaptroller"
-                                    target="_blank"
-                                    ><i class="fas fa-external-link-alt"></i
-                                ></a>
-                            </div>
-                        </div>
-                        <h3>Cheaptroller</h3>
-                        <p>
-                            A lightweight Linux-based solution that turns your
-                            phone into a fully functional PC game controller.
-                        </p>
-                        <div class="project-tags">
-                            <span>Flutter</span>
-                            <span>Node.js</span>
-                            <span>C++</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ===== SECTION: WELCOME ===== -->
+  <template id="section-welcome">
+    <div class="welcome-content">
+      <p class="hero-greeting">Hi, I'm <span class="highlight">blqnk3d</span></p>
+      <h1 class="hero-title">Building <span class="typing-text"></span><span class="cursor">|</span></h1>
+      <p class="hero-subtitle">I create tools and applications to optimize workflows and solve real-world problems.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary win-opener" data-section="projects">View Work</button>
+        <button class="btn btn-secondary win-opener" data-section="contact">Get In Touch</button>
+      </div>
+    </div>
+  </template>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="contact-box fade-in">
-                    <h2>Let's Work Together</h2>
-                    <p>
-                        Have a project in mind or want to discuss technology?
-                        Feel free to reach out.
-                    </p>
-                    <div class="contact-links">
-                        <a
-                            href="https://github.com/blqnk3d"
-                            target="_blank"
-                            class="btn btn-primary"
-                            ><i class="fab fa-github"></i> GitHub</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ===== SECTION: ABOUT ===== -->
+  <template id="section-about">
+    <div class="about-content">
+      <div class="about-text">
+        <p>I'm a developer focused on creating efficient tools and applications. Whether it's saving money or making life easier, I build solutions that matter. I specialize in full-stack development with a keen eye for clean code and user experience.</p>
+        <p>When I'm not coding, I'm exploring new technologies or contributing to open-source projects.</p>
+      </div>
+      <div class="tech-stack">
+        <h3>Tech Stack</h3>
+        <div class="tech-grid">
+          <div class="tech-item"><i class="fab fa-html5"></i> HTML</div>
+          <div class="tech-item"><i class="fab fa-css3-alt"></i> CSS</div>
+          <div class="tech-item"><i class="fab fa-js"></i> JS</div>
+          <div class="tech-item"><i class="fab fa-angular"></i> Angular</div>
+          <div class="tech-item"><i class="fab fa-node"></i> Node.js</div>
+          <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+          <div class="tech-item"><i class="fab fa-git-alt"></i> Git</div>
+          <div class="tech-item"><i class="fas fa-database"></i> SQL</div>
+        </div>
+      </div>
+    </div>
+  </template>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p>
-                    &copy; <span id="year"></span> blqnk3d. All rights reserved.
-                </p>
-                <div class="social-footer">
-                    <a href="https://github.com/blqnk3d" target="_blank"
-                        ><i class="fab fa-github"></i
-                    ></a>
-                </div>
-            </div>
-        </footer>
+  <!-- ===== SECTION: PROJECTS ===== -->
+  <template id="section-projects">
+    <div class="projects-content">
+      <div class="project-card">
+        <div class="card-header">
+          <i class="fas fa-gamepad"></i>
+          <div class="card-links">
+            <a href="https://github.com/blqnk3d/Cheaptroller" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/blqnk3d/Cheaptroller" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <h3>Cheaptroller</h3>
+        <p>A lightweight Linux-based solution that turns your phone into a fully functional PC game controller.</p>
+        <div class="project-tags">
+          <span>Flutter</span>
+          <span>Node.js</span>
+          <span>C++</span>
+        </div>
+      </div>
+    </div>
+  </template>
 
-        <script src="script.js"></script>
-    </body>
+  <!-- ===== SECTION: CONTACT ===== -->
+  <template id="section-contact">
+    <div class="contact-content">
+      <div class="contact-box">
+        <h2>Let's Work Together</h2>
+        <p>Have a project in mind or want to discuss technology? Feel free to reach out.</p>
+        <a href="https://github.com/blqnk3d" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
 </html>
