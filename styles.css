@@ -259,6 +259,21 @@ body {
     display: none;
 }
 
+.window .resize-handle {
+  position: absolute;
+}
+
+.window .resize-handle.n  { top: -3px; left: 8px; right: 8px; height: 6px; cursor: n-resize; }
+.window .resize-handle.s  { bottom: -3px; left: 8px; right: 8px; height: 6px; cursor: s-resize; }
+.window .resize-handle.e  { right: -3px; top: 8px; bottom: 8px; width: 6px; cursor: e-resize; }
+.window .resize-handle.w  { left: -3px; top: 8px; bottom: 8px; width: 6px; cursor: w-resize; }
+.window .resize-handle.ne { top: -3px; right: -3px; width: 12px; height: 12px; cursor: ne-resize; }
+.window .resize-handle.nw { top: -3px; left: -3px; width: 12px; height: 12px; cursor: nw-resize; }
+.window .resize-handle.se { bottom: -3px; right: -3px; width: 12px; height: 12px; cursor: se-resize; }
+.window .resize-handle.sw { bottom: -3px; left: -3px; width: 12px; height: 12px; cursor: sw-resize; }
+
+.window.maximized .resize-handle { display: none; }
+
 .window.maximized {
     border-radius: 0 !important;
     border-left: none !important;

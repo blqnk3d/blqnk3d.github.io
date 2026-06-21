@@ -23,6 +23,12 @@ class WindowManager {
     this.initTrayClock()
     this.initOutsideClick()
     this.openWindow('welcome')
+    this.openWindow('about')
+    this.minimizeWindow(this.findWindow('about'))
+    this.openWindow('projects')
+    this.minimizeWindow(this.findWindow('projects'))
+    this.openWindow('contact')
+    this.minimizeWindow(this.findWindow('contact'))
   }
 
   /* ---- Desktop Icons ---- */
@@ -307,6 +313,7 @@ class WindowManager {
     })
 
     this.makeDraggable(id)
+    this.makeResizable(id)
   }
 
   makeDraggable(id) {
@@ -349,6 +356,51 @@ class WindowManager {
         el.style.cursor = ''
       }
     })
+  }
+
+  /* ---- Resizable ---- */
+  makeResizable(id) {
+    const w = this.windows.get(id)
+    if (!w) return
+    const el = w.el
+    const MIN_W = 280, MIN_H = 200
+    let resizing = false, dir = '', startX, startY, startW, startH, startL, startT
+
+    el.querySelectorAll('.resize-handle').forEach(handle => {
+      handle.addEventListener('mousedown', (e) => {
+        if (w.maximized) return
+        e.preventDefault()
+        e.stopPropagation()
+        resizing = true
+        dir = handle.dataset.dir
+        startX = e.clientX
+        startY = e.clientY
+        startW = el.offsetWidth
+        startH = el.offsetHeight
+        startL = parseInt(el.style.left)
+        startT = parseInt(el.style.top)
+        this.focusWindow(id)
+      })
+    })
+
+    document.addEventListener('mousemove', (e) => {
+      if (!resizing) return
+      const dx = e.clientX - startX
+      const dy = e.clientY - startY
+      let newW = startW, newH = startH, newL = startL, newT = startT
+
+      if (dir.includes('e')) newW = Math.max(MIN_W, startW + dx)
+      if (dir.includes('w')) { newW = Math.max(MIN_W, startW - dx); newL = startL + (startW - newW) }
+      if (dir.includes('s')) newH = Math.max(MIN_H, startH + dy)
+      if (dir.includes('n')) { newH = Math.max(MIN_H, startH - dy); newT = startT + (startH - newH) }
+
+      el.style.width = newW + 'px'
+      el.style.height = newH + 'px'
+      el.style.left = newL + 'px'
+      el.style.top = newT + 'px'
+    })
+
+    document.addEventListener('mouseup', () => { resizing = false })
   }
 
   /* ---- Typing Effect ---- */
